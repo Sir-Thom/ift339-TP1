@@ -14,9 +14,7 @@ using namespace std;
  * Représentation d'une matrice à l'iade d'un pointeur de pointeurs
  * @tparam TYPE Type d'objet à stocker
  */
-template <typename TYPE>
-class Matrice
-{
+template <typename TYPE> class Matrice {
 private:
   TYPE **tab;
   size_t nb_rangees;
@@ -133,9 +131,7 @@ public:
 //////////////////////////////////////////////////////////////////////////////////////////
 // IMPLÉMENTATION
 //////////////////////////////////////////////////////////////////////////////////////////
-template <typename TYPE>
-Matrice<TYPE>::Matrice(size_t n, size_t m)
-{
+template <typename TYPE> Matrice<TYPE>::Matrice(size_t n, size_t m) {
   tab = nullptr;
   nb_rangees = 0;
   nb_colonnes = 0;
@@ -144,32 +140,24 @@ Matrice<TYPE>::Matrice(size_t n, size_t m)
 }
 
 template <typename TYPE>
-Matrice<TYPE>::Matrice(size_t n, size_t m, vector<TYPE> v)
-{
+Matrice<TYPE>::Matrice(size_t n, size_t m, vector<TYPE> v) {
   redimensionner(n, m);
   int cpt = 0;
-  for (size_t i = 0; i < n; ++i)
-  {
-    for (size_t j = 0; j < m; ++j)
-    {
+  for (size_t i = 0; i < n; ++i) {
+    for (size_t j = 0; j < m; ++j) {
       this->at(i, j) = v[cpt];
-      cpt += 1;
+      cpt++;
     }
   }
 }
 
-template <typename TYPE>
-Matrice<TYPE>::Matrice(const Matrice &src)
-{
+template <typename TYPE> Matrice<TYPE>::Matrice(const Matrice &src) {
   // *** à remplir ***
 }
 
-template <typename TYPE>
-Matrice<TYPE>::~Matrice()
-{
+template <typename TYPE> Matrice<TYPE>::~Matrice() {
   // *** à remplir ***
-  for (size_t i = 0; i < nb_rangees; ++i)
-  {
+  for (size_t i = 0; i < nb_rangees; ++i) {
     delete[] tab[i];
   }
 
@@ -177,47 +165,37 @@ Matrice<TYPE>::~Matrice()
 }
 
 template <typename TYPE>
-Matrice<TYPE> &Matrice<TYPE>::operator=(const Matrice &src)
-{
+Matrice<TYPE> &Matrice<TYPE>::operator=(const Matrice &src) {
   // *** à remplir ***
 }
-template <typename TYPE>
-TYPE &Matrice<TYPE>::operator()(size_t r, size_t c)
-{
+template <typename TYPE> TYPE &Matrice<TYPE>::operator()(size_t r, size_t c) {
   // *** à remplir ***
+  throw ::logic_error("Function not yet implemented");
 }
 
-template <typename TYPE>
-TYPE &Matrice<TYPE>::at(size_t r, size_t c)
-{
+template <typename TYPE> TYPE &Matrice<TYPE>::at(size_t r, size_t c) {
   // *** à remplir ***
-  if (r >= nb_rangees || c >= nb_colonnes)
-  {
-    cout << "indice de rangée ou de colonne invalide" << endl;
+  if (r >= nb_rangees || c >= nb_colonnes) {
+    throw out_of_range("indice de rangée ou de colonne invalide");
   }
 
   return tab[r][c];
 }
 
 template <typename TYPE>
-void Matrice<TYPE>::redimensionner(size_t n, size_t m)
-{
+void Matrice<TYPE>::redimensionner(size_t n, size_t m) {
   TYPE **temp_tab = new TYPE *[n];
-  for (size_t i = 0; i < n; ++i)
-  {
+  for (size_t i = 0; i < n; ++i) {
     temp_tab[i] = new TYPE[m];
   }
 
-  for (size_t i = 0; i < min(n, nb_rangees); ++i)
-  {
-    for (size_t j = 0; j < min(m, nb_colonnes); ++j)
-    {
+  for (size_t i = 0; i < min(n, nb_rangees); ++i) {
+    for (size_t j = 0; j < min(m, nb_colonnes); ++j) {
       temp_tab[i][j] = tab[i][j];
     }
   }
 
-  for (size_t i = 0; i < nb_rangees; ++i)
-  {
+  for (size_t i = 0; i < nb_rangees; ++i) {
     delete[] tab[i];
   }
   delete[] tab;
@@ -228,30 +206,23 @@ void Matrice<TYPE>::redimensionner(size_t n, size_t m)
 }
 
 template <typename TYPE>
-pair<size_t, size_t> Matrice<TYPE>::get_dimensions() const
-{
+pair<size_t, size_t> Matrice<TYPE>::get_dimensions() const {
   return make_pair(nb_rangees, nb_colonnes); // voir doc C++
 }
 
 template <typename TYPE>
-void Matrice<TYPE>::swap_rangees(size_t r1, size_t r2)
-{
+void Matrice<TYPE>::swap_rangees(size_t r1, size_t r2) {
   // *** à remplir ***
 }
 
 template <typename TYPE>
-void Matrice<TYPE>::swap_colonnes(size_t c1, size_t c2)
-{
+void Matrice<TYPE>::swap_colonnes(size_t c1, size_t c2) {
   // *** à remplir ***
 }
 
-template <typename TYPE>
-void Matrice<TYPE>::afficher()
-{
-  for (size_t i = 0; i < nb_rangees; ++i)
-  {
-    for (size_t j = 0; j < nb_colonnes; ++j)
-    {
+template <typename TYPE> void Matrice<TYPE>::afficher() {
+  for (size_t i = 0; i < nb_rangees; ++i) {
+    for (size_t j = 0; j < nb_colonnes; ++j) {
       cout << this->at(i, j) << " ";
     }
     cout << endl;
