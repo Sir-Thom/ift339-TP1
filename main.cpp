@@ -2,8 +2,7 @@
 #include <cstdlib>
 
 // retourne true si mat est bien gardee, et false sinon
-bool est_gardee(Matrice<bool> &mat)
-{
+bool est_gardee(Matrice<bool> &mat) {
 
   //**** à remplir ****
 }
@@ -11,13 +10,10 @@ bool est_gardee(Matrice<bool> &mat)
 // quelques fonctions utilitaires pour la création de matrices (vous n'avez pas
 // de travail demandé dans ces fonctions) construit et retourne une matrice
 // booléenne aléatoire
-Matrice<bool> get_bool_matrice_random(size_t rows, size_t cols)
-{
+Matrice<bool> get_bool_matrice_random(size_t rows, size_t cols) {
   Matrice<bool> mat(rows, cols);
-  for (size_t r = 0; r < rows; ++r)
-  {
-    for (size_t c = 0; c < cols; ++c)
-    {
+  for (size_t r = 0; r < rows; ++r) {
+    for (size_t c = 0; c < cols; ++c) {
       mat(r, c) = rand() % 2; // façon discutable d'allouer un bool aléatoire
     }
   }
@@ -26,13 +22,10 @@ Matrice<bool> get_bool_matrice_random(size_t rows, size_t cols)
 }
 
 // construit et retourne une matrice booléenne vide
-Matrice<bool> get_bool_matrice_vide(size_t rows, size_t cols)
-{
+Matrice<bool> get_bool_matrice_vide(size_t rows, size_t cols) {
   Matrice<bool> mat(rows, cols);
-  for (size_t r = 0; r < rows; ++r)
-  {
-    for (size_t c = 0; c < cols; ++c)
-    {
+  for (size_t r = 0; r < rows; ++r) {
+    for (size_t c = 0; c < cols; ++c) {
       mat(r, c) = false; // façon discutable d'allouer un bool aléatoire
     }
   }
@@ -42,28 +35,23 @@ Matrice<bool> get_bool_matrice_vide(size_t rows, size_t cols)
 
 // affecte la valeur val à chaque cellule de la rangée r
 template <typename TYPE>
-void remplir_rangee(Matrice<TYPE> &mat, size_t r, TYPE val)
-{
+void remplir_rangee(Matrice<TYPE> &mat, size_t r, TYPE val) {
   size_t nbcol = mat.get_dimensions().second;
-  for (size_t c = 0; c < nbcol; ++c)
-  {
+  for (size_t c = 0; c < nbcol; ++c) {
     mat(r, c) = val; // notez que ceci fait une copie
   }
 }
 
 // affecte la valeur val à chaque colonne de la rangée r
 template <typename TYPE>
-void remplir_colonne(Matrice<TYPE> &mat, size_t c, TYPE &val)
-{
+void remplir_colonne(Matrice<TYPE> &mat, size_t c, TYPE &val) {
   size_t nbrangee = mat.get_dimensions().first;
-  for (size_t r = 0; r < nbrangee; ++r)
-  {
+  for (size_t r = 0; r < nbrangee; ++r) {
     mat(r, c) = val; // notez que ceci fait une copie
   }
 }
 
-int main()
-{
+int main() {
 
   // ce main presente quelques cas d'utilisation, mais ne teste pas tout!
 
@@ -155,8 +143,7 @@ int main()
   cout << "mat_cn gardee=" << gardee << endl;
 
   Matrice<bool> mat_diag = get_bool_matrice_vide(dim, dim);
-  for (size_t i = 0; i < dim; ++i)
-  {
+  for (size_t i = 0; i < dim; ++i) {
     mat_diag(i, i) = true;
   }
   gardee = est_gardee(mat_diag);
