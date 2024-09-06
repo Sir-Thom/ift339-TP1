@@ -3,8 +3,7 @@
 
 // retourne true si mat est bien gardee, et false sinon
 bool est_gardee(Matrice<bool> &mat) {
-
-  //**** à remplir ****
+  return true;
 }
 
 // quelques fonctions utilitaires pour la création de matrices (vous n'avez pas
