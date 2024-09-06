@@ -170,7 +170,8 @@ Matrice<TYPE> &Matrice<TYPE>::operator=(const Matrice &src) {
 }
 template <typename TYPE> TYPE &Matrice<TYPE>::operator()(size_t r, size_t c) {
   // *** à remplir ***
-  throw ::logic_error("Function not yet implemented");
+  // à faire
+  throw ::logic_error("pas encore fait");
 }
 
 template <typename TYPE> TYPE &Matrice<TYPE>::at(size_t r, size_t c) {
@@ -178,7 +179,6 @@ template <typename TYPE> TYPE &Matrice<TYPE>::at(size_t r, size_t c) {
   if (r >= nb_rangees || c >= nb_colonnes) {
     throw out_of_range("indice de rangée ou de colonne invalide");
   }
-
   return tab[r][c];
 }
 
