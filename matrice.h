@@ -171,7 +171,7 @@ Matrice<TYPE> &Matrice<TYPE>::operator=(const Matrice &src) {
 template <typename TYPE> TYPE &Matrice<TYPE>::operator()(size_t r, size_t c) {
   // *** à remplir ***
   // à faire
-  throw ::logic_error("pas encore fait");
+  return tab[r][c];
 }
 
 template <typename TYPE> TYPE &Matrice<TYPE>::at(size_t r, size_t c) {
