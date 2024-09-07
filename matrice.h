@@ -153,24 +153,49 @@ Matrice<TYPE>::Matrice(size_t n, size_t m, vector<TYPE> v) {
 
 template <typename TYPE> Matrice<TYPE>::Matrice(const Matrice &src) {
   // *** à remplir ***
+  redimensionner(src.nb_rangees, src.nb_colonnes);
+  std::cout << "Copying matrix: " << src.nb_rangees << " x " << src.nb_colonnes
+            << std::endl;
 }
 
 template <typename TYPE> Matrice<TYPE>::~Matrice() {
   // *** à remplir ***
-  for (size_t i = 0; i < nb_rangees; ++i) {
-    delete[] tab[i];
-  }
+  if (tab != nullptr) {
+    for (size_t i = 0; i < nb_rangees; ++i) {
+      delete[] tab[i];
+    }
 
-  delete[] tab;
+    delete[] tab;
+  }
 }
 
 template <typename TYPE>
 Matrice<TYPE> &Matrice<TYPE>::operator=(const Matrice &src) {
   // *** à remplir ***
+  // affectation
+  if (this != &src) {
+    if (tab != nullptr) {
+      for (size_t i = 0; i < nb_rangees; ++i) {
+        delete[] tab[i];
+      }
+      delete[] tab;
+    }
+
+    this->tab = new TYPE *[nb_rangees];
+    for (size_t i = 0; i < nb_rangees; ++i) {
+      tab[i] = new TYPE[nb_colonnes];
+    }
+    for (size_t i = 0; i < nb_rangees; ++i) {
+
+      for (size_t j = 0; j < nb_colonnes; j++) {
+        tab[i][j] = src.tab[i][j];
+      }
+    }
+  }
+  return *this;
 }
 template <typename TYPE> TYPE &Matrice<TYPE>::operator()(size_t r, size_t c) {
   // *** à remplir ***
-  // à faire
   return tab[r][c];
 }
 
