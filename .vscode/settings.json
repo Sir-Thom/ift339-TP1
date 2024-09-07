@@ -6,5 +6,8 @@
         "editor.formatOnSave": true,
         
     },
-    "clang-format.executable": "clang-format"
+    "clang-format.executable": "clang-format",
+    "files.associations": {
+        "ostream": "cpp"
+    }
 }

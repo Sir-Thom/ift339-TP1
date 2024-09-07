@@ -2,10 +2,7 @@
 #include <cstdlib>
 
 // retourne true si mat est bien gardee, et false sinon
-bool est_gardee(Matrice<bool> &mat) {
-
-  //**** à remplir ****
-}
+bool est_gardee(Matrice<bool> &mat) { /*** à remplir ***/ }
 
 // quelques fonctions utilitaires pour la création de matrices (vous n'avez pas
 // de travail demandé dans ces fonctions) construit et retourne une matrice
@@ -58,7 +55,6 @@ int main() {
   size_t rows = 3;
   size_t cols = 4;
   Matrice<int> mat(rows, cols, {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12});
-
   cout << "Matrice initiale" << endl;
   mat.afficher();
 
