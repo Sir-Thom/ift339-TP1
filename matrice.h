@@ -239,7 +239,7 @@ void Matrice<TYPE>::swap_rangees(size_t r1, size_t r2) {
     tab[r1] = tab[r2];
     tab[r2] = tmp;*/
   // plus optimale
-  swap(r1, r2);
+  swap(tab[r1], tab[r2]);
 }
 
 template <typename TYPE>
