@@ -6,6 +6,7 @@
 #include <iostream>
 #include <iterator>
 #include <stddef.h> //pour size_t
+#include <utility>
 #include <vector>
 
 using namespace std;
@@ -214,17 +215,21 @@ template <typename TYPE>
 void Matrice<TYPE>::swap_rangees(size_t r1, size_t r2) {
   // swap la rangée qui est = *tmp  fut que tab est ** pour un obtenir rangée on
   // doit avoir tab[1] qui est un pointer de rangée
-  TYPE *tmp = tab[r1];
-  tab[r1] = tab[r2];
-  tab[r2] = tmp;
+  /*  TYPE *tmp = tab[r1];
+    tab[r1] = tab[r2];
+    tab[r2] = tmp;*/
+  // plus optimale
+  swap(r1, r2);
 }
 
 template <typename TYPE>
 void Matrice<TYPE>::swap_colonnes(size_t c1, size_t c2) {
   for (size_t i = 0; i < nb_rangees; i++) {
-    TYPE temp = tab[i][c1];
-    tab[i][c1] = tab[i][c2];
-    tab[i][c2] = temp;
+    /*  TYPE temp = tab[i][c1];
+        tab[i][c1] = tab[i][c2];
+        tab[i][c2] = temp;*/
+    // plus optimale
+    swap(tab[i][c1], tab[i][c2]);
   }
 }
 
