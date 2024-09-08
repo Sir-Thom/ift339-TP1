@@ -8,6 +8,11 @@
     },
     "clang-format.executable": "clang-format",
     "files.associations": {
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "random": "cpp",
+        "limits": "cpp",
+        "algorithm": "cpp",
+        "stdexcept": "cpp",
+        "new": "cpp"
     }
 }
