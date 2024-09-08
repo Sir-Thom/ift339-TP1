@@ -212,12 +212,20 @@ pair<size_t, size_t> Matrice<TYPE>::get_dimensions() const {
 
 template <typename TYPE>
 void Matrice<TYPE>::swap_rangees(size_t r1, size_t r2) {
-  // *** à remplir ***
+  // swap la rangée qui est = *tmp  fut que tab est ** pour un obtenir rangée on
+  // doit avoir tab[1] qui est un pointer de rangée
+  TYPE *tmp = tab[r1];
+  tab[r1] = tab[r2];
+  tab[r2] = tmp;
 }
 
 template <typename TYPE>
 void Matrice<TYPE>::swap_colonnes(size_t c1, size_t c2) {
-  // *** à remplir ***
+  for (size_t i = 0; i < nb_rangees; i++) {
+    TYPE temp = tab[i][c1];
+    tab[i][c1] = tab[i][c2];
+    tab[i][c2] = temp;
+  }
 }
 
 template <typename TYPE> void Matrice<TYPE>::afficher() {
