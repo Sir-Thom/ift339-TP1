@@ -2,7 +2,31 @@
 #include <cstdlib>
 
 // retourne true si mat est bien gardee, et false sinon
-bool est_gardee(Matrice<bool> &mat) { /*** à remplir ***/ }
+bool est_gardee(Matrice<bool> &mat) { 
+  size_t rows = mat.get_dimensions().first;
+  size_t cols = mat.get_dimensions().second;
+  bool gardee = true;
+  std::vector<bool> rangee_gardee(rows, false);
+  std::vector<bool> colonne_gardee(cols, false);
+
+
+  for (size_t r = 0; r < rows; ++r) {
+        for (size_t c = 0; c < cols; ++c) {
+            if (mat(r, c)) {
+                rangee_gardee[r] = true;
+                colonne_gardee[c] = true;
+            }
+        }
+    }
+    for (size_t r = 0; r < rows; ++r) {
+        for (size_t c = 0; c < cols; ++c) {
+            if (!rangee_gardee[r] && !colonne_gardee[c]) {
+                return gardee = false;
+            }
+        }
+    }
+  return gardee;
+}
 
 // quelques fonctions utilitaires pour la création de matrices (vous n'avez pas
 // de travail demandé dans ces fonctions) construit et retourne une matrice
