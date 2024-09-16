@@ -1,3 +1,7 @@
+/*
+Nom:Thomas Toulouse                     CIP:tout3815
+Nom:Canis Christabelle Tchonet Toukam   CIP:tchc0901
+*/
 #ifndef MATRICE_H
 #define MATRICE_H
 
@@ -238,24 +242,33 @@ template <typename TYPE>
 void Matrice<TYPE>::redimensionner(size_t n, size_t m)
 {
   TYPE **temp_tab = new TYPE *[n];
-  tab = temp_tab;
 
   for (size_t i = 0; i < n; ++i)
   {
     temp_tab[i] = new TYPE[m];
   }
+  size_t min_n = min(n, nb_rangees);  // https://cplusplus.com/reference/algorithm/min/
+  size_t min_m = min(m, nb_colonnes); // retourne le min entre deux valeurs
 
-  for (size_t i = 0; i < nb_rangees; ++i)
+  for (size_t i = 0; i < min_n; ++i)
   {
-    for (size_t j = 0; j < nb_colonnes; ++j)
+
+    for (size_t j = 0; j < min_m; ++j)
     {
+
       temp_tab[i][j] = tab[i][j];
     }
   }
 
+  for (size_t i = 0; i < nb_rangees; ++i)
+  {
+    delete[] tab[i];
+  }
+  delete[] tab;
+
+  tab = temp_tab;
   nb_rangees = n;
   nb_colonnes = m;
-  tab = temp_tab;
 }
 
 template <typename TYPE>
